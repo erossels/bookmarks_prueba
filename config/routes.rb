@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :kinds
   resources :categories
 
-  get "/:category_id", to: "index#retrieve"
+  get "/retrieve/:id", to: "home#retrieve", as: "home_retrieve"
 end

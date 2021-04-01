@@ -9,19 +9,8 @@ class HomeController < ApplicationController
   end
 
   def retrieve
-    @bookmarks = Bookmark.where("created_at BETWEEN ? AND ?", Date.parse(params[:fecha1]), Date.parse(params[:fecha2]).tomorrow).order("updated_at DESC").page(params[:page])
-    all_content = []
-    @tweets.each do |tweet|
-      tweets_hash = {
-        id: tweet.id,
-        content: tweet.content,
-        user_id: tweet.user.id,
-        like_count: tweet.likes.count,
-        retweets_count: tweet.retweets.count,
-        retweeted_from: retweet_from(tweet)
-      }
-      all_content.append(tweets_hash)
-    end
-    render json: all_content
+    @parent = Category.find(params[:id])
+    render json: @parent.retrieval
   end
+
 end

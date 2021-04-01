@@ -18,4 +18,43 @@ class Category < ApplicationRecord
     children.flatten
   end
 
+  def retrieval
+    @bookmarks = Bookmark.where(category_id: id)
+    content = [ { 'Category': [] }, {'Bookmarks': []}, {'Subcategories': []} ]
+
+    content[0]['Category'] = {
+      category_id: id,
+      category_name: name,
+      is_public: is_public,
+      parent_category: category_id
+    }
+
+    bookmarks_array = []
+    @bookmarks.each do |bookmark|
+      bookmarks_hash = {
+        id: bookmark.id, 
+        name: bookmark.name, 
+        url: bookmark.url,
+        category_id: bookmark.category_id,
+        kind_id: bookmark.kind_id, 
+        created_at: bookmark.created_at,
+        updated_at: bookmark.updated_at
+      }
+      bookmarks_array.append(bookmarks_hash)
+    end
+    content[1]['Bookmarks'] = bookmarks_array
+
+    parents_array = []
+    self.children.each do |child|
+      unless child.nil?
+        children_hash = child.retrieval
+        parents_array.append(children_hash)
+      end
+    end
+
+    content[2]['Subcategories'] = parents_array
+
+    content
+  end
+
 end
