@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "faker", "~> 2.17"
 
 gem "bootstrap", "~> 4.6"
+
+gem "chartkick", "~> 3.4"
+gem "groupdate", "~> 5.2"

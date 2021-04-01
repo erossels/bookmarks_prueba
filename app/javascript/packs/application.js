@@ -10,6 +10,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("popper.js")
+require("chartkick")
+require("highcharts")
 
 
 
