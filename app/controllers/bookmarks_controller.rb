@@ -57,7 +57,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark.destroy
     respond_to do |format|
-      format.html { redirect_to bookmarks_url, notice: "Bookmark was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Bookmark was successfully destroyed." }
       format.json { head :no_content }
     end
   end

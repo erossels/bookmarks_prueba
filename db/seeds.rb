@@ -15,12 +15,14 @@ Kind.create(name:'newsletter')
 Kind.create(name:'audio')
 Kind.create(name:'other')
 
+coin = [0,1]
+
 5.times do |i|
- seed = Category.create(name: Faker::Commerce.department, is_public: 0)
+  @seed = Category.create(name: 'Category_'+i.to_s, is_public: coin.sample)
   5.times do |j|
-    seed2 = Category.create(name: Faker::Commerce.product_name, is_public: seed.is_public, category_id: seed.id)
+    @seed2 = Category.create(name: 'Category_'+i.to_s+'.'+j.to_s, is_public: @seed.is_public, category_id: @seed.id)
     5.times do |k|
-      Category.create(name: Faker::Commerce.color, is_public: seed2.is_public)
+      Category.create(name: 'Category_'+i.to_s+'.'+j.to_s+'.'+k.to_s, is_public: @seed2.is_public, category_id: @seed2.id)
     end
   end
 end

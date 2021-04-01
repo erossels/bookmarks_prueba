@@ -1,6 +1,6 @@
 <h1>Bookmarks</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Id</th>
@@ -18,8 +18,8 @@
         <td><%= bookmark.id %></td>
         <td><%= bookmark.name %></td>
         <td><%= bookmark.url %></td>
-        <td><%= bookmark.category_id %></td>
-        <td><%= bookmark.kind_id %></td>
+        <td><%= Category.find(bookmark.category_id) %></td>
+        <td><%= Kind.find(bookmark.kind_id) %></td>
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
         <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>

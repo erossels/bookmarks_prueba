@@ -22,6 +22,9 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
+    if !params[:category_id].nil?
+      @category.is_public = Category.find(params[:category_id]).is_public
+    end
 
     respond_to do |format|
       if @category.save
@@ -36,9 +39,15 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
+    unless @category.children.nil?
+      @category.children.each do |child|
+        child.update(is_public: category_params[:is_public])
+      end
+    end
+
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: "Category was successfully updated." }
+        format.html { redirect_to category_path, notice: "Category was successfully updated." }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,6 +73,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:id, :name, :category_id_id, :is_public)
+      params.require(:category).permit(:id, :name, :category_id, :is_public)
     end
 end

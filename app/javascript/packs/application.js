@@ -11,6 +11,7 @@ require("channels")
 require("jquery")
 require("popper.js")
 require("chartkick")
+require("chart.js")
 require("highcharts")
 
 
