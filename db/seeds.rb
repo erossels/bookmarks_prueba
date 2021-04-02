@@ -35,6 +35,6 @@ array_kinds = [1,2,3,4,5]
     name:'B_000'+i.to_s, 
     url: 'www.B_000'+i.to_s+'.cl', 
     category_id: array_cats.sample,
-    kinds_id: array_kinds.sample
+    kind_id: array_kinds.sample
   )
 end

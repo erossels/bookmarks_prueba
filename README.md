@@ -17,6 +17,12 @@
 
 - [x] El CRUD para la administración de categorías, marcadores y tipos, se realizó con **scaffolds**.
 
+- [x] El formulario de bookmarks es enviado a través de una petición AJAX
+
+```ruby
+<%= form_with(model: bookmark, remote: true) do |form| %>
+```
+
 - [x] Se define el endpoint **https://localhost:3000/retrieve/:category_id** para retornar un JSON con los datos de una categoría (incluyendo subcategorías y marcadores). El esquema json es el siguiente:  
 
 * Categoria: Describe la categoria llamada desde el endpoint a partir de su **id**.
