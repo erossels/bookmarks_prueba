@@ -19,6 +19,8 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks/1/edit
   def edit
+    @categories = Category.all
+    @kinds = Kind.all
   end
 
   # POST /bookmarks or /bookmarks.json

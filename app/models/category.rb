@@ -9,7 +9,7 @@ class Category < ApplicationRecord
 
   def children
     children = []
-    Category.where(Category_id: id).each do |child|
+    Category.where(category_id: id).each do |child|
       children.append(child)
       unless child.category_id.nil?
         children.append(child.children)

@@ -19,7 +19,7 @@
       </thead>
 
       <tbody>
-        <% @categories.each do |category| %>
+        <% @categories.order(:id).each do |category| %>
           <tr>
             <td><%= category.id %></td>
             <td><%= category.name %></td>
