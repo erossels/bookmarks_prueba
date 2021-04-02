@@ -32,9 +32,13 @@
   </div>
 
   <div class="actions">
-    <%= form.submit data: { confirm: 'Confirma tu solicitud', disable_with: 'Creando...'}, class: 'btn btn-primary' %>
+    <%= form.submit data: { confirm: 'Confirma tu solicitud', disable_with: 'Creando...'}, class: 'btn btn-primary', id:'btn-form'%>
   </div>
 <% end %>
 
-
+<script>
+$('#btn-form').on('click',function(e){
+  window.location.reload();
+})
+</script>
  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>

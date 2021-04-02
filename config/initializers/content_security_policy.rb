@@ -9,9 +9,9 @@ Rails.application.config.content_security_policy do |policy|
 #   policy.font_src    :self, :https, :data
 #   policy.img_src     :self, :https, :data
 #   policy.object_src  :none
-    policy.script_src  :self
-    policy.style_src   :self
-    policy.style_src   :self, :unsafe_inline
+    policy.script_src  :self, :https, :unsafe_inline
+    policy.style_src   :self, :https, :unsafe_inline
+    policy.style_src   :self, :https, :unsafe_inline
 #   # If you are using webpack-dev-server then specify webpack-dev-server host
     policy.connect_src :self, :https, "http://localhost:3000", "ws://localhost:3000" if Rails.env.development?
 
@@ -20,7 +20,7 @@ Rails.application.config.content_security_policy do |policy|
 end
 
 # If you are using UJS then enable automatic nonce generation
-Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
+# Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
 
 # Set the nonce only to specific directives
 # Rails.application.config.content_security_policy_nonce_directives = %w(script-src)
